@@ -1,0 +1,392 @@
+/* ============================================================================
+   Redmine-style CSS
+   Стилизация формы создания задачи «по мотивам» темы PurpleMine2-master.
+   Не копирует оригинал — свои селекторы, свои цвета.
+   ============================================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Verdana, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f6f6f6;
+}
+
+/* ---------------------------------------------------------------------------
+   Хедер
+   --------------------------------------------------------------------------- */
+
+.redmine-header {
+    background: linear-gradient(180deg, #6a5acd 0%, #5b4baf 100%);
+    color: #fff;
+    padding: 12px 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+    .redmine-header h1 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .redmine-header .subtitle {
+        font-size: 12px;
+        opacity: 0.9;
+        margin-top: 2px;
+    }
+
+/* ---------------------------------------------------------------------------
+   Основной контейнер
+   --------------------------------------------------------------------------- */
+
+.redmine-content {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.form-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #444;
+    margin: 0 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* ---------------------------------------------------------------------------
+   Форма
+   --------------------------------------------------------------------------- */
+
+.redmine-form {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-row {
+    display: flex;
+    margin-bottom: 14px;
+    align-items: flex-start;
+}
+
+    .form-row.two-columns {
+        gap: 20px;
+    }
+
+        .form-row.two-columns > .form-group {
+            flex: 1;
+        }
+
+.form-group {
+    display: flex;
+    margin-bottom: 14px;
+    align-items: flex-start;
+}
+
+    .form-group > label {
+        width: 180px;
+        flex-shrink: 0;
+        padding-top: 6px;
+        font-weight: 600;
+        color: #444;
+        font-size: 13px;
+    }
+
+        .form-group > label.required::after {
+            content: " *";
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+.form-control-wrapper {
+    flex: 1;
+    min-width: 0;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 6px 10px;
+    font-family: inherit;
+    font-size: 13px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="date"]:focus,
+    select:focus,
+    textarea:focus {
+        outline: none;
+        border-color: #6a5acd;
+        box-shadow: 0 0 0 2px rgba(106, 90, 205, 0.15);
+    }
+
+    input[readonly],
+    textarea[readonly] {
+        background-color: #f5f5f5;
+        color: #555;
+        cursor: not-allowed;
+    }
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+/* ---------------------------------------------------------------------------
+   Радио-кнопки (Техдолг)
+   --------------------------------------------------------------------------- */
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    padding-top: 6px;
+}
+
+    .radio-group label {
+        display: flex;
+        align-items: center;
+        font-weight: 400;
+        cursor: pointer;
+    }
+
+    .radio-group input[type="radio"] {
+        margin-right: 6px;
+    }
+
+/* ---------------------------------------------------------------------------
+   Кнопки
+   --------------------------------------------------------------------------- */
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 18px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #4a90d9;
+    color: #fff;
+}
+
+    .btn-primary:hover {
+        background-color: #3a7ec0;
+    }
+
+.btn-secondary {
+    background-color: #e8e8e8;
+    color: #444;
+}
+
+    .btn-secondary:hover {
+        background-color: #d8d8d8;
+    }
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ---------------------------------------------------------------------------
+   Секции (custom fields)
+   --------------------------------------------------------------------------- */
+
+.form-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.form-section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 14px;
+}
+
+/* ---------------------------------------------------------------------------
+   Сообщения об ошибках
+   --------------------------------------------------------------------------- */
+
+.alert {
+    padding: 12px 16px;
+    border-radius: 3px;
+    margin-bottom: 16px;
+    font-size: 13px;
+}
+
+.alert-danger {
+    background-color: #fce8e8;
+    color: #a94442;
+    border: 1px solid #ebcccc;
+}
+
+.alert-warning {
+    background-color: #fcf8e3;
+    color: #8a6d3b;
+    border: 1px solid #faebcc;
+}
+
+.alert-info {
+    background-color: #e7f3fe;
+    color: #31708f;
+    border: 1px solid #bce8f1;
+}
+
+/* ---------------------------------------------------------------------------
+   Информационный блок «задача уже создана»
+   --------------------------------------------------------------------------- */
+
+.already-linked {
+    max-width: 600px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+}
+
+    .already-linked h2 {
+        color: #4a90d9;
+        margin: 0 0 16px 0;
+    }
+
+    .already-linked .link {
+        display: inline-block;
+        margin-top: 16px;
+        padding: 10px 20px;
+        background: #4a90d9;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 3px;
+        font-weight: 600;
+    }
+
+        .already-linked .link:hover {
+            background: #3a7ec0;
+        }
+
+/* ---------------------------------------------------------------------------
+   Подсказки
+   --------------------------------------------------------------------------- */
+
+.field-hint {
+    display: block;
+    font-size: 11px;
+    color: #888;
+    margin-top: 3px;
+}
+
+/* ---------------------------------------------------------------------------
+   Страница «Задача уже создана» — расширенная версия
+   --------------------------------------------------------------------------- */
+
+.already-linked .issue-ref {
+    font-size: 18px;
+    color: #4a90d9;
+    margin: 12px 0;
+}
+
+.already-linked .external-id-hint {
+    font-size: 12px;
+    color: #666;
+    margin: 8px 0 16px 0;
+}
+
+    .already-linked .external-id-hint code {
+        background: #f4f4f4;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: Consolas, Monaco, monospace;
+        color: #333;
+    }
+
+.already-linked .divider {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 24px 0;
+}
+
+.already-linked .warning-block {
+    background: #fff8e1;
+    border-left: 4px solid #f0ad4e;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    text-align: left;
+    border-radius: 3px;
+}
+
+    .already-linked .warning-block p {
+        margin: 6px 0;
+        font-size: 13px;
+        color: #5a4500;
+    }
+
+    .already-linked .warning-block .arrow {
+        color: #999;
+        margin: 0 6px;
+        font-weight: bold;
+    }
+
+.already-linked .already-linked-form .actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.already-linked .btn-danger {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+    .already-linked .btn-danger:hover {
+        background-color: #c9302c;
+    }
+
+.already-linked .footnote {
+    margin-top: 20px;
+    color: #888;
+    font-size: 11px;
+}
+
+    .already-linked .footnote code {
+        background: #f4f4f4;
+        padding: 1px 4px;
+        border-radius: 2px;
+    }

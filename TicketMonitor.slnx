@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/Элементы решения/">
+    <File Path="deploy.ps1" />
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Project Path="TicketMonitor.Api/TicketMonitor.Api.csproj" />
+  <Project Path="TicketMonitor.Core/TicketMonitor.Core.csproj" />
+  <Project Path="TicketMonitor.Core.Tests/TicketMonitor.Core.Tests.csproj" />
+  <Project Path="TicketMonitor.Redmine.Tests/TicketMonitor.Redmine.Tests.csproj" Id="0b3543ae-0595-40db-80e6-9dc12f298cf6" />
+  <Project Path="TicketMonitor.Redmine/TicketMonitor.Redmine.csproj" />
+  <Project Path="TicketMonitor.Watchdog.Tests/TicketMonitor.Watchdog.Tests.csproj" Id="7f12a9f6-2d9a-46e2-b1cd-0679b2f34f93" />
+  <Project Path="TicketMonitor.Watchdog/TicketMonitor.Watchdog.csproj" />
+</Solution>

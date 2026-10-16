@@ -1,0 +1,63 @@
+@page
+@model TicketMonitor.Watchdog.Pages.IndexModel
+@{
+    ViewData["Title"] = "Статистика";
+}
+
+<div class="wd-toolbar">
+    <div class="wd-period">
+        <button type="button" class="wd-period-btn" data-period="today">Сегодня</button>
+        <button type="button" class="wd-period-btn" data-period="yesterday">Вчера</button>
+        <button type="button" class="wd-period-btn active" data-period="week">Неделя</button>
+        <button type="button" class="wd-period-btn" data-period="month">Месяц</button>
+    </div>
+    <button type="button" class="wd-refresh" id="wd-refresh" title="Обновить">↻ Обновить</button>
+</div>
+
+<div class="wd-loading" id="wd-loading">Загрузка…</div>
+<div class="wd-error" id="wd-error" style="display:none;"></div>
+
+<section class="wd-section" id="wd-services-section" style="display:none;">
+    <h2 class="wd-section-title">Статус сервисов</h2>
+    <div class="wd-table-wrapper">
+        <table class="wd-table" id="wd-services-table">
+            <thead>
+            <tr>
+                <th>Сервис</th>
+                <th class="wd-col-num">Проверок</th>
+                <th class="wd-col-num">Успешно</th>
+                <th class="wd-col-num">Uptime</th>
+                <th class="wd-col-num">Ср. ответ</th>
+                <th class="wd-col-num">Простой</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</section>
+
+<section class="wd-section" id="wd-ops-section" style="display:none;">
+    <h2 class="wd-section-title">Операции по сервисам</h2>
+    <div id="wd-ops-content"></div>
+</section>
+
+<section class="wd-section" id="wd-downtimes-section" style="display:none;">
+    <h2 class="wd-section-title">События падения за период</h2>
+    <div class="wd-table-wrapper">
+        <table class="wd-table" id="wd-downtimes-table">
+            <thead>
+            <tr>
+                <th>Сервис</th>
+                <th>Начало</th>
+                <th>Восстановление</th>
+                <th class="wd-col-num">Длительность</th>
+                <th>Причина</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div class="wd-empty" id="wd-downtimes-empty" style="display:none;">
+        За период падений не зафиксировано.
+    </div>
+</section>

@@ -1,0 +1,77 @@
+﻿@model GlpiSolutionFormViewModel
+@{
+    ViewData["Title"] = $"Решение по заявке #{Model.Ticket.Id}";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/glpi-style.css" asp-append-version="true" />
+}
+
+<div class="glpi-container">
+    <div class="glpi-card">
+
+        <div class="glpi-card-header">
+            <h1 class="glpi-title">
+                Решение по заявке <span class="glpi-ticket-id">#@Model.Ticket.Id</span>
+            </h1>
+            <div class="glpi-subtitle">@Model.Ticket.Title</div>
+        </div>
+
+        <div class="glpi-card-body">
+
+            @if (Model.ShowPendingWarning)
+            {
+                <div class="glpi-alert glpi-alert-warning" role="alert">
+                    <div class="glpi-alert-icon">⚠️</div>
+                    <div class="glpi-alert-body">
+                        <div class="glpi-alert-title">Этот элемент в ожидании подтверждения</div>
+                        <div class="glpi-alert-text">Вы действительно хотите решить или закрыть его?</div>
+                    </div>
+                </div>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(Model.Error))
+            {
+                <div class="glpi-alert glpi-alert-danger" role="alert">
+                    <div class="glpi-alert-icon">✖</div>
+                    <div class="glpi-alert-body">
+                        <div class="glpi-alert-text">@Model.Error</div>
+                    </div>
+                </div>
+            }
+
+            <form method="post" action="/glpi/solution" class="glpi-form">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="TicketId" value="@Model.Ticket.Id" />
+
+                <div class="glpi-form-group">
+                    <label for="SolutionText" class="glpi-label">Текст решения</label>
+                    <textarea id="SolutionText"
+                              name="SolutionText"
+                              class="glpi-textarea"
+                              rows="8"
+                              maxlength="10000"
+                              autofocus
+                              required>@Model.SolutionText</textarea>
+                </div>
+
+                <div class="glpi-form-actions">
+                    <button type="submit" class="glpi-btn glpi-btn-primary">
+                        ➕ Добавить
+                    </button>
+                    <a href="@Model.GlpiTicketUrl" class="glpi-btn glpi-btn-secondary">
+                        Отмена
+                    </a>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="glpi-card-footer">
+            <a href="@Model.GlpiTicketUrl" class="glpi-link" target="_blank" rel="noopener">
+                @Model.GlpiTicketUrl
+            </a>
+        </div>
+
+    </div>
+</div>

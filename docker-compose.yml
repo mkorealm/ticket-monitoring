@@ -1,0 +1,69 @@
+services:
+  ticketmonitor-api:
+    build:
+      context: .
+      dockerfile: TicketMonitor.Api/Dockerfile
+    image: ticketmonitor-api:latest
+    container_name: ticketmonitor-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - TZ=Europe/Moscow
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data/api/Data:/app/Data
+      - ./data/api/Backups:/app/Backups
+      - ./logs/api:/app/Logs
+    networks:
+      - ticketmonitor
+
+  ticketmonitor-redmine:
+    build:
+      context: .
+      dockerfile: TicketMonitor.Redmine/Dockerfile
+    image: ticketmonitor-redmine:latest
+    container_name: ticketmonitor-redmine
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - TZ=Europe/Moscow
+    ports:
+      - "8082:8082"
+    volumes:
+      - ./data/redmine/Data:/app/Data
+      - ./logs/redmine:/app/Logs
+    networks:
+      - ticketmonitor
+
+  ticketmonitor-watchdog:
+    build:
+      context: .
+      dockerfile: TicketMonitor.Watchdog/Dockerfile
+    image: ticketmonitor-watchdog:latest
+    container_name: ticketmonitor-watchdog
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - TZ=Europe/Moscow
+      - Watchdog__Services__0__BasePath=/mnt/api
+      - Watchdog__Services__1__BasePath=/mnt/redmine
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./data/watchdog/Data:/app/Data
+      - ./logs/watchdog:/app/Logs
+      - ./data/api/Data:/mnt/api/Data
+      - ./data/redmine/Data:/mnt/redmine/Data
+    depends_on:
+      - ticketmonitor-api
+      - ticketmonitor-redmine
+    networks:
+      - ticketmonitor
+
+networks:
+  ticketmonitor:
+    driver: bridge

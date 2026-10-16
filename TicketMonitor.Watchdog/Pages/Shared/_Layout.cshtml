@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] — Watchdog</title>
+    <link rel="stylesheet" href="~/css/watchdog.css" asp-append-version="true">
+</head>
+<body>
+
+<header class="wd-header">
+    <div class="wd-header-inner">
+        <div class="wd-logo">
+            <span class="wd-logo-icon">🛡️</span>
+            <div>
+                <div class="wd-logo-title">TicketMonitor Watchdog</div>
+                <div class="wd-logo-subtitle">Мониторинг работоспособности сервисов</div>
+            </div>
+        </div>
+        <div class="wd-clock" id="wd-clock">—</div>
+    </div>
+</header>
+
+<main class="wd-main">
+    @RenderBody()
+</main>
+
+<footer class="wd-footer">
+    <span>Watchdog v1 · API: <a href="/swagger" target="_blank" rel="noopener">/swagger</a></span>
+</footer>
+
+<script src="~/js/watchdog.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

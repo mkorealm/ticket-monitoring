@@ -1,0 +1,226 @@
+﻿/* ============================================================================
+   GLPI-style CSS
+   Визуальный язык, приближенный к GLPI 11 / Tabler.
+   Стили изолированы классом .glpi-* — не пересекаются с redmine-style.css.
+   ============================================================================ */
+
+.glpi-container {
+    max-width: 720px;
+    margin: 20px auto;
+    padding: 0 16px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #1a1f36;
+}
+
+/* ---------------------------------------------------------------------------
+   Карточка
+   --------------------------------------------------------------------------- */
+
+.glpi-card {
+    background: #ffffff;
+    border: 1px solid #e6e8eb;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.glpi-card-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #e6e8eb;
+    background: #f8f9fa;
+}
+
+.glpi-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1f36;
+}
+
+.glpi-ticket-id {
+    color: #d63939;
+}
+
+.glpi-subtitle {
+    margin-top: 4px;
+    font-size: 13px;
+    color: #6c757d;
+}
+
+.glpi-card-body {
+    padding: 20px;
+}
+
+.glpi-card-footer {
+    padding: 12px 20px;
+    border-top: 1px solid #e6e8eb;
+    background: #f8f9fa;
+    font-size: 12px;
+}
+
+.glpi-link {
+    color: #206bc4;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+    .glpi-link:hover {
+        text-decoration: underline;
+    }
+
+/* ---------------------------------------------------------------------------
+   Alert
+   --------------------------------------------------------------------------- */
+
+.glpi-alert {
+    display: flex;
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-size: 13px;
+}
+
+.glpi-alert-icon {
+    flex-shrink: 0;
+    font-size: 18px;
+    margin-right: 12px;
+    line-height: 1.4;
+}
+
+.glpi-alert-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.glpi-alert-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.glpi-alert-text {
+    color: inherit;
+}
+
+.glpi-alert-warning {
+    background: #fff5cc;
+    border-left: 4px solid #f59f00;
+    color: #7a5c00;
+}
+
+.glpi-alert-danger {
+    background: #fbe7e7;
+    border-left: 4px solid #d63939;
+    color: #7a1d1d;
+}
+
+/* ---------------------------------------------------------------------------
+   Форма
+   --------------------------------------------------------------------------- */
+
+.glpi-form-group {
+    margin-bottom: 16px;
+}
+
+.glpi-label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #1a1f36;
+}
+
+.glpi-textarea {
+    width: 100%;
+    min-height: 160px;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #1a1f36;
+    background: #ffffff;
+    border: 1px solid #c8ccd1;
+    border-radius: 4px;
+    resize: vertical;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+    .glpi-textarea:focus {
+        outline: none;
+        border-color: #206bc4;
+        box-shadow: 0 0 0 3px rgba(32, 107, 196, 0.15);
+    }
+
+/* ---------------------------------------------------------------------------
+   Кнопки
+   --------------------------------------------------------------------------- */
+
+.glpi-form-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.glpi-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+    line-height: 1.4;
+}
+
+.glpi-btn-primary {
+    background: #206bc4;
+    border-color: #206bc4;
+    color: #ffffff;
+}
+
+    .glpi-btn-primary:hover {
+        background: #1a569d;
+        border-color: #1a569d;
+    }
+
+.glpi-btn-secondary {
+    background: #e6e8eb;
+    border-color: #d3d6da;
+    color: #1a1f36;
+}
+
+    .glpi-btn-secondary:hover {
+        background: #d3d6da;
+        border-color: #c8ccd1;
+    }
+
+/* ---------------------------------------------------------------------------
+   Мобильная адаптация
+   --------------------------------------------------------------------------- */
+
+@media (max-width: 600px) {
+    .glpi-container {
+        margin: 12px auto;
+        padding: 0 8px;
+    }
+
+    .glpi-card-body,
+    .glpi-card-header,
+    .glpi-card-footer {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .glpi-form-actions {
+        flex-direction: column;
+    }
+
+    .glpi-btn {
+        width: 100%;
+    }
+}

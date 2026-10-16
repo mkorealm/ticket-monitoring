@@ -1,0 +1,336 @@
+/* ============================================================================
+   Watchdog UI
+   Минималистичный стиль для администратора. Без фреймворков.
+   ============================================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #2c3e50;
+    background: #f5f5f5;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+/* ---------------------------------------------------------------------------
+   Header
+   --------------------------------------------------------------------------- */
+
+.wd-header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 12px 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.wd-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.wd-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.wd-logo-icon {
+    font-size: 28px;
+    line-height: 1;
+}
+
+.wd-logo-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.wd-logo-subtitle {
+    font-size: 12px;
+    opacity: 0.75;
+    margin-top: 2px;
+}
+
+.wd-clock {
+    font-size: 13px;
+    opacity: 0.85;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------------------
+   Main
+   --------------------------------------------------------------------------- */
+
+.wd-main {
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 0 24px;
+}
+
+.wd-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 12px;
+}
+
+.wd-period {
+    display: flex;
+    gap: 4px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+.wd-period-btn {
+    padding: 6px 14px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    color: #2c3e50;
+    background: transparent;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+    .wd-period-btn:hover {
+        background: #f0f0f0;
+    }
+
+    .wd-period-btn.active {
+        background: #3498db;
+        color: #fff;
+    }
+
+.wd-refresh {
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    color: #2c3e50;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+    .wd-refresh:hover {
+        background: #f0f0f0;
+    }
+
+/* ---------------------------------------------------------------------------
+   Section
+   --------------------------------------------------------------------------- */
+
+.wd-section {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.wd-section-title {
+    margin: 0;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* ---------------------------------------------------------------------------
+   Table
+   --------------------------------------------------------------------------- */
+
+.wd-table-wrapper {
+    overflow-x: auto;
+}
+
+.wd-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+    .wd-table th {
+        text-align: left;
+        padding: 10px 16px;
+        font-weight: 600;
+        color: #6c757d;
+        background: #fafafa;
+        border-bottom: 1px solid #e0e0e0;
+        white-space: nowrap;
+    }
+
+    .wd-table td {
+        padding: 10px 16px;
+        border-bottom: 1px solid #f0f0f0;
+        vertical-align: top;
+    }
+
+    .wd-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .wd-table tbody tr:hover {
+        background: #f8f9fa;
+    }
+
+.wd-col-num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------------------
+   Status
+   --------------------------------------------------------------------------- */
+
+.wd-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.wd-status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.wd-status.up .wd-status-dot {
+    background: #27ae60;
+}
+
+.wd-status.down .wd-status-dot {
+    background: #e74c3c;
+}
+
+.wd-status.unknown .wd-status-dot {
+    background: #95a5a6;
+}
+
+.wd-status.up {
+    color: #27ae60;
+}
+
+.wd-status.down {
+    color: #e74c3c;
+}
+
+.wd-status.unknown {
+    color: #95a5a6;
+}
+
+.wd-value-good {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.wd-value-warn {
+    color: #f39c12;
+    font-weight: 600;
+}
+
+.wd-value-bad {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.wd-value-muted {
+    color: #95a5a6;
+}
+
+/* ---------------------------------------------------------------------------
+   Operations block
+   --------------------------------------------------------------------------- */
+
+.wd-service-block {
+    border-top: 1px solid #f0f0f0;
+}
+
+    .wd-service-block:first-child {
+        border-top: none;
+    }
+
+.wd-service-head {
+    padding: 12px 20px;
+    background: #fafafa;
+    font-weight: 600;
+    font-size: 13px;
+    color: #2c3e50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.wd-service-head-meta {
+    font-weight: 400;
+    color: #6c757d;
+    font-size: 12px;
+}
+
+.wd-empty {
+    padding: 16px 20px;
+    color: #95a5a6;
+    font-style: italic;
+    font-size: 13px;
+}
+
+/* ---------------------------------------------------------------------------
+   Loading / Error
+   --------------------------------------------------------------------------- */
+
+.wd-loading {
+    padding: 40px 20px;
+    text-align: center;
+    color: #95a5a6;
+    font-size: 14px;
+}
+
+.wd-error {
+    padding: 16px 20px;
+    background: #fbe7e7;
+    border-left: 4px solid #e74c3c;
+    color: #7a1d1d;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* ---------------------------------------------------------------------------
+   Footer
+   --------------------------------------------------------------------------- */
+
+.wd-footer {
+    max-width: 1400px;
+    margin: 20px auto 40px;
+    padding: 0 24px;
+    color: #95a5a6;
+    font-size: 12px;
+    text-align: center;
+}

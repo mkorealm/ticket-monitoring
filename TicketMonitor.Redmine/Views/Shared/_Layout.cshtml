@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] — Ticket Monitor</title>
+
+    <meta property="og:title" content="@ViewData["Title"]" />
+    <meta property="og:description" content="Интеграция Ticket Monitor с Redmine и GLPI" />
+    <meta property="og:type" content="website" />
+
+    <link rel="stylesheet" href="~/css/redmine-style.css" asp-append-version="true">
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+
+    <header class="redmine-header">
+        <h1>Ticket Monitor</h1>
+        <div class="subtitle">Интеграция с Redmine и GLPI</div>
+    </header>
+
+    <main class="redmine-content">
+        @RenderBody()
+    </main>
+
+</body>
+</html>

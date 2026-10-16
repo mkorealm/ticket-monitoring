@@ -1,0 +1,149 @@
+﻿@model RedmineFormViewModel
+@{
+    ViewData["Title"] = $"Создание задачи по заявке #{Model.Ticket.Id}";
+}
+
+<h2 class="form-title">
+    @(Model.ForceCreate ? "Новая задача в Redmine (повторное создание)" : "Новая задача в Redmine")
+</h2>
+
+@if (Model.ForceCreate)
+{
+    <div class="alert alert-warning">
+        <strong>Внимание:</strong> по заявке #@Model.Ticket.Id уже есть задача в Redmine.
+        Вы создаёте <b>вторую</b> задачу. В поле «Внешний ID» заявки GLPI будет дописан новый ID.
+    </div>
+}
+
+@if (!ViewData.ModelState.IsValid && ViewData.ModelState.ErrorCount > 0)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <div>@error.ErrorMessage</div>
+        }
+    </div>
+}
+
+<form method="post" action="/redmine/create" class="redmine-form">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" name="GlpiTicketId" value="@Model.Ticket.Id" />
+    @if (Model.ForceCreate)
+    {
+        <input type="hidden" name="ForceCreate" value="true" />
+    }
+
+    <div class="form-group">
+        <label>Заявка GLPI</label>
+        <div class="form-control-wrapper">
+            <a href="@Model.GlpiTicketUrl" target="_blank" rel="noopener">#@Model.Ticket.Id — @Model.Ticket.Title</a>
+            <span class="field-hint">Ссылка на исходную заявку в GLPI</span>
+        </div>
+    </div>
+
+    <div class="form-row two-columns">
+        <div class="form-group">
+            <label for="ProjectId" class="required">Проект</label>
+            <div class="form-control-wrapper">
+                <select id="ProjectId" name="ProjectId" onchange="location.href='/redmine/create?ticketId=@Model.Ticket.Id&projectId=' + this.value@(Model.ForceCreate ? "&forceCreate=true" : "")">
+                    @foreach (var project in Model.Projects)
+                    {
+                        <option value="@project.Id" selected="@(project.Id == Model.SelectedProjectId)">
+                            @project.Name
+                        </option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="TrackerId" class="required">Трекер</label>
+            <div class="form-control-wrapper">
+                <select id="TrackerId" name="TrackerId">
+                    @foreach (var tracker in Model.Trackers)
+                    {
+                        <option value="@tracker.Id" selected="@(tracker.Id == Model.SelectedTrackerId)">
+                            @tracker.Name
+                        </option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Subject" class="required">Тема</label>
+        <div class="form-control-wrapper">
+            <input type="text" id="Subject" name="Subject" value="@Model.Ticket.Title" maxlength="255" required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Description">Описание</label>
+        <div class="form-control-wrapper">
+            <textarea id="Description" name="Description" rows="8"></textarea>
+            <span class="field-hint">Опишите задачу. Описание из GLPI можно скопировать из заявки.</span>
+        </div>
+    </div>
+
+    <div class="form-row two-columns">
+        <div class="form-group">
+            <label for="AssignedToId">Назначена</label>
+            <div class="form-control-wrapper">
+                <select id="AssignedToId" name="AssignedToId">
+                    <option value="">— не назначено —</option>
+                    @foreach (var member in Model.Memberships.Where(m => m.CanBeAssigned))
+                    {
+                        <option value="@member.UserId">@member.UserName</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+    @if (Model.SelectedProjectId == 18 || Model.SelectedProjectId == 46)
+    {
+        <div class="form-section">
+            <div class="form-section-title">Дополнительные поля</div>
+
+            <div class="form-group">
+                <label class="required">Техдолг</label>
+                <div class="form-control-wrapper">
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="CustomFields[7]" value="1" checked />
+                            Да
+                        </label>
+                        <label>
+                            <input type="radio" name="CustomFields[7]" value="0" />
+                            Нет
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cf_13" class="required">Среда разработки</label>
+                <div class="form-control-wrapper">
+                    <select id="cf_13" name="CustomFields[13]">
+                        <option value="DEVELOPMENT">DEVELOPMENT</option>
+                        <option value="TESTING">TESTING</option>
+                        <option value="DEMONSTRATION">DEMONSTRATION</option>
+                        <option value="PRODUCTION">PRODUCTION</option>
+                        <option value="OTHER" selected>OTHER</option>
+                    </select>
+                </div>
+            </div>
+
+            <input type="hidden" name="CustomFields[5]" value="@Model.Ticket.Id" />
+        </div>
+    }
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">
+            @(Model.ForceCreate ? "Создать вторую задачу в Redmine" : "Создать задачу в Redmine")
+        </button>
+        <a href="@Model.GlpiTicketUrl" class="btn btn-secondary" target="_blank">Отмена</a>
+    </div>
+</form>

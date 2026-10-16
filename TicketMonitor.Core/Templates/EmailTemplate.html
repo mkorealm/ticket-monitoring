@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="color-scheme" content="light dark">
+    <meta name="supported-color-schemes" content="light dark">
+    <title>Уведомление о заявке</title>
+
+    <!--[if mso]>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
+
+    <style>
+        /* ============================================================
+           Базовые стили для клиентов, поддерживающих <style> в <head>.
+           Gmail, Apple Mail, Thunderbird, Outlook (новый) — применяют.
+           Outlook 2016/2019 (Word-движок) — игнорируют, у них свои хаки.
+           ============================================================ */
+
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            background-color: #f4f4f9;
+        }
+
+        table {
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        img {
+            border: 0;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+            /* Убираем автоссылки на мобильных (iOS определяет телефоны/даты как ссылки) */
+            a[x-apple-data-detectors] {
+                color: inherit !important;
+                text-decoration: none !important;
+                font-size: inherit !important;
+                font-family: inherit !important;
+                font-weight: inherit !important;
+                line-height: inherit !important;
+            }
+
+        /* ============================================================
+           Тёмная тема.
+           Применяется, когда пользователь включил тёмный режим в ОС/клиенте.
+           ============================================================ */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a1a1a !important;
+            }
+
+            .email-wrapper {
+                background-color: #1a1a1a !important;
+            }
+
+            .email-container {
+                background-color: #2d2d2d !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+            }
+
+            .email-header {
+                background-color: #2980b9 !important;
+            }
+
+            .email-header-text {
+                color: #ffffff !important;
+            }
+
+            .text-primary {
+                color: #ecf0f1 !important;
+            }
+
+            .text-secondary {
+                color: #bdc3c7 !important;
+            }
+
+            .text-muted {
+                color: #95a5a6 !important;
+            }
+
+            .ticket-id {
+                color: #e74c3c !important;
+            }
+
+            .status-badge {
+                background-color: #1e3a5f !important;
+                color: #64b5f6 !important;
+            }
+
+            .priority-text {
+                color: #f39c12 !important;
+            }
+
+            .link-primary {
+                color: #64b5f6 !important;
+            }
+
+            .section-block {
+                background-color: #383838 !important;
+            }
+
+            .section-title {
+                color: #ecf0f1 !important;
+            }
+
+            .answer-block {
+                background-color: #383838 !important;
+                border-left-color: #64b5f6 !important;
+            }
+
+            .answer-author {
+                color: #ecf0f1 !important;
+            }
+
+            .answer-text {
+                color: #bdc3c7 !important;
+            }
+
+            .placeholder-text {
+                color: #95a5a6 !important;
+            }
+
+            .email-footer {
+                background-color: #252525 !important;
+                border-top-color: #404040 !important;
+            }
+
+            .email-footer-text {
+                color: #95a5a6 !important;
+            }
+
+            hr {
+                border-color: #404040 !important;
+            }
+        }
+    </style>
+
+    <!--[if mso]>
+    <style type="text/css">
+        /* Outlook 2016/2019 (Word-движок) — свои хаки.
+           Отключаем автоматическое растягивание line-height,
+           задаём точные отступы в таблицах. */
+        body, table, td, a, p, span, div {
+            font-family: Arial, sans-serif !important;
+        }
+        .mso-fallback-container {
+            width: 600px !important;
+        }
+        .mso-padding-fix {
+            mso-padding-alt: 0 24px 0 24px;
+        }
+        .mso-line-height-fix {
+            mso-line-height-rule: exactly;
+        }
+    </style>
+    <![endif]-->
+</head>
+<body class="email-wrapper" style="margin: 0; padding: 0; background-color: #f4f4f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #333;">
+
+    <!-- Основной контейнер (таблица для Outlook) -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="email-wrapper" style="background-color: #f4f4f9; padding: 20px;">
+        <tr>
+            <td align="center" style="padding: 20px;">
+
+                <!--[if mso]>
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" class="mso-fallback-container">
+                <tr>
+                <td>
+                <![endif]-->
+
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" class="email-container" style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow: hidden;">
+
+                    <!-- Шапка -->
+                    <tr>
+                        <td class="email-header" style="background-color: #3498db; padding: 20px; text-align: center;">
+                            <span class="email-header-text" style="font-size: 22px; font-weight: 700; color: #ffffff;">📩 Ticket Monitor</span>
+                        </td>
+                    </tr>
+
+                    <!-- Тело письма -->
+                    <tr>
+                        <td style="padding: 24px;">
+
+                            <!-- Основные поля -->
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 20px;">
+                                <tr>
+                                    <td class="ticket-id" style="padding: 5px 0; font-size: 15px; font-weight: 700; color: #e74c3c;">ID: {{TicketId}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-primary" style="padding: 5px 0; font-size: 16px; font-weight: 600; color: #2c3e50;">{{Title}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-secondary" style="padding: 5px 0; color: #34495e;">
+                                        <span style="font-weight: 600;">Статус:</span>
+                                        <span class="status-badge" style="display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; background-color: #e3f2fd; color: #1565c0;">{{Status}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-secondary" style="padding: 5px 0; color: #34495e;">
+                                        <span style="font-weight: 600;">Инициатор:</span> {{Initiator}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-secondary" style="padding: 5px 0; color: #34495e;">
+                                        <span style="font-weight: 600;">Приоритет:</span>
+                                        <span class="priority-text" style="color: #f39c12; font-weight: 600;">{{Priority}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-secondary" style="padding: 5px 0; color: #34495e;">
+                                        <span style="font-weight: 600;">Дата открытия:</span> {{OpenDate}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px 0;">
+                                        <a href="{{Url}}" target="_blank" class="link-primary" style="color: #3498db; font-weight: 600; text-decoration: underline;">🔗 Перейти к заявке</a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Описание -->
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="section-block" style="background-color: #f8f9fa; border-radius: 8px; margin-bottom: 16px;">
+                                <tr>
+                                    <td style="padding: 16px 16px 0 16px;">
+                                        <span class="section-title" style="font-size: 15px; font-weight: 700; color: #2c3e50;">📝 Описание:</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-secondary mso-line-height-fix" style="padding: 8px 16px 16px 16px; color: #34495e; line-height: 1.5;">
+                                        {{Description}}
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Ответы -->
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="section-block" style="background-color: #f8f9fa; border-radius: 8px;">
+                                <tr>
+                                    <td style="padding: 16px 16px 0 16px;">
+                                        <span class="section-title" style="font-size: 15px; font-weight: 700; color: #2c3e50;">💬 Новые ответы:</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-secondary mso-line-height-fix" style="padding: 8px 16px 16px 16px; color: #34495e; line-height: 1.5;">
+                                        {{Answers}}
+                                    </td>
+                                </tr>
+                            </table>
+
+                            {{ActionButton}}
+
+                        </td>
+                    </tr>
+
+                    <!-- Подвал -->
+                    <tr>
+                        <td class="email-footer" style="background-color: #f8f9fa; padding: 16px; text-align: center; font-size: 12px; color: #6c757d; border-top: 1px solid #e9ecef;">
+                            <span class="email-footer-text" style="color: #6c757d;">
+                                Это автоматическое уведомление от сервиса мониторинга заявок Ticket Monitor.<br />
+                                Для просмотра заявки перейдите по ссылке выше.
+                            </span>
+                        </td>
+                    </tr>
+
+                </table>
+
+                <!--[if mso]>
+                </td>
+                </tr>
+                </table>
+                <![endif]-->
+
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

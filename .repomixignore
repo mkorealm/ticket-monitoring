@@ -1,0 +1,36 @@
+# Снимки деплоя — не имеют отношения к исходному коду
+deploy-backups/
+
+# Скомпилированные артефакты
+**/bin/
+**/obj/
+**/*.dll
+**/*.exe
+**/*.pdb
+**/*.so
+**/*.dylib
+**/*.nupkg
+
+# Сгенерированные XML-доки (дублируют XML-комментарии из .cs)
+**/*.xml
+
+# JSON-файлы сборки
+**/*.deps.json
+**/*.runtimeconfig.json
+**/*.staticwebassets.endpoints.json
+
+# Сжатые версии статики
+**/*.br
+**/*.gz
+
+# Конфиги деплоя
+**/web.config
+**/appsettings.Development.json
+
+# Тестовые БД (если есть)
+**/Data/
+**/*.db
+
+# Backup-папки
+**/deploy-backups/
+**/backups/

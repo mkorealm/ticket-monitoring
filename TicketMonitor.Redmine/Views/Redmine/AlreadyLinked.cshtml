@@ -1,0 +1,74 @@
+﻿@model RedmineFormViewModel
+@{
+    ViewData["Title"] = $"Заявка #{Model.Ticket.Id} уже связана";
+}
+
+<div class="already-linked">
+    <h2>Задача уже создана</h2>
+
+    <p>
+        По заявке GLPI <strong>#@Model.Ticket.Id</strong> уже создана задача в Redmine:
+    </p>
+
+    @if (Model.ExistingRedmineIssueId.HasValue)
+    {
+        <p class="issue-ref">
+            <strong>#@Model.ExistingRedmineIssueId</strong>
+        </p>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.ExistingGlpiExternalId))
+    {
+        <p class="external-id-hint">
+            Текущий «Внешний ID» в GLPI:
+            <code>@Model.ExistingGlpiExternalId</code>
+        </p>
+    }
+
+    <p>
+        <a href="@Model.ExistingRedmineIssueUrl" class="link" target="_blank" rel="noopener">
+            Открыть задачу в Redmine
+        </a>
+    </p>
+
+    <hr class="divider" />
+
+    <div class="warning-block">
+        <p>
+            <strong>Хотите создать вторую задачу по этой же заявке?</strong>
+        </p>
+        <p>
+            Это нужно в редких случаях — например, если задача была закрыта, а проблема вернулась.
+        </p>
+        <p>
+            В поле «Внешний ID» заявки GLPI будет дописан новый ID:
+            @if (!string.IsNullOrWhiteSpace(Model.ExistingGlpiExternalId))
+            {
+                <br />
+                <code>@Model.ExistingGlpiExternalId</code>
+                <span class="arrow">→</span>
+                <code>@Model.ExistingGlpiExternalId, &lt;новый ID&gt;</code>
+            }
+            else
+            {
+                <br />
+                <code>&lt;новый ID&gt;</code>
+            }
+        </p>
+    </div>
+
+    <div class="actions">
+        <a href="/redmine/create?ticketId=@Model.Ticket.Id&forceCreate=true"
+           class="btn btn-danger"
+           onclick="return confirm('Создать ВТОРУЮ задачу в Redmine по заявке #@Model.Ticket.Id? Вы перейдёте к форме заполнения.');">
+            Всё равно создать
+        </a>
+        <a href="@Model.GlpiTicketUrl" class="btn btn-secondary" target="_blank" rel="noopener">
+            Отмена
+        </a>
+    </div>
+
+    <p class="footnote">
+        Для управления связями используйте БД <code>Data/redmine_links.db</code>.
+    </p>
+</div>
